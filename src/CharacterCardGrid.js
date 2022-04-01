@@ -7,11 +7,12 @@ import CharacterInfoPageStore from './CharacterInfoPageStore'
 class CharacterCard extends CharacterInfo {
     constructor(props) {
         super(props)
-        this.store = new CharacterInfoPageStore(Math.floor(Math.random() * 800))
+        this.id = Math.floor(Math.random() * 800)
+        this.store = new CharacterInfoPageStore(this.id)
         this.infoArray = ['status']
         this.height = 300
         this.cardActions = (
-            <Link to="/characters/1">
+            <Link to={`/characters/${this.id}`}>
                 <Button size="small">More info</Button>
             </Link>
         )
@@ -27,33 +28,18 @@ function CharacterCardGrid() {
                 justifyContent="center"
                 alignItems="stretch"
             >
-                <Grid item sm={2}>
+                <Grid item lg={2}>
                     <CharacterCard />
                 </Grid>
-                <Grid item sm={2}>
+                <Grid item lg={2}>
                     <CharacterCard />
                 </Grid>
-                <Grid item sm={2}>
+                <Grid item lg={2}>
                     <CharacterCard />
                 </Grid>
-                <Grid item sm={2}>
+                <Grid item lg={2}>
                     <CharacterCard />
                 </Grid>
-                {/* <Grid item md={3} className="grid">
-                    <CharacterCard mini />
-                </Grid>
-                <Grid item md={3} className="grid">
-                    <CharacterCard mini />
-                </Grid>
-                <Grid item md={3} className="grid">
-                    <CharacterCard mini />
-                </Grid>
-                <Grid item md={3} className="grid">
-                    <CharacterCard mini />
-                </Grid>
-                <Grid item md={3} className="grid">
-                    <CharacterCard mini />
-                </Grid> */}
             </Grid>
         </Box>
     )

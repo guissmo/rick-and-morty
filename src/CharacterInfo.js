@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import {
     Container,
     Card,
@@ -28,7 +29,11 @@ class CharacterInfo extends React.Component {
             'episodeCount',
         ]
         this.height = 500
-        this.cardActions = <Button size="small">Go back</Button>
+        this.cardActions = (
+            <Link to={`/characters`}>
+                <Button size="small">Go back</Button>
+            </Link>
+        )
     }
 
     componentDidMount() {
@@ -37,11 +42,7 @@ class CharacterInfo extends React.Component {
 
     render() {
         if (this.store.loading) {
-            return (
-                <Button onClick={this.store.fetchInfo.bind(this.store)}>
-                    Hi
-                </Button>
-            )
+            return 'Loading...'
         }
 
         const content = {

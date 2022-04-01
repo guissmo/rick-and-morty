@@ -22,7 +22,7 @@ ReactDOM.render(
         {/* <Provider {...stores}> */}
         <Router history={history}>
             <Routes>
-                <Route exact path="/" element={<MainPage />} />
+                <Route exact path="/characters" element={<MainPage />} />
                 <Route path="/characters/:id" element={<CharacterInfoPage />} />
             </Routes>
         </Router>
