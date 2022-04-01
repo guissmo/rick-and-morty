@@ -1,3 +1,4 @@
+/* OBSOLETE
 import React from 'react'
 import {
     Card,
@@ -39,3 +40,4 @@ function CharacterCard() {
 }
 
 export default CharacterCard
+*/
