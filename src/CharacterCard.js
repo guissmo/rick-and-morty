@@ -1,33 +1,41 @@
-import { Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material'
-import testPic from '../src/test.jpg'
+import React from 'react'
+import {
+    Card,
+    CardMedia,
+    CardContent,
+    Typography,
+    CardActions,
+    Button,
+} from '@mui/material'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
+import MonitorHeartIcon from '@mui/icons-material/MonitorHeart'
+import testPic from './test.jpg'
 
 function CharacterCard() {
-    return(
-        <div className="col-lg-4 card-container">
+    return (
         <Card>
             <CardMedia
-              component="img"
-              height="140"
-              image={testPic}
-              alt="it is rick"
+                component="img"
+                height="140"
+                image={testPic}
+                alt="it is rick"
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Mr. Poopybutthole
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Location: Earth
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Status: Alive
-              </Typography>
+                <Typography gutterBottom variant="h5" component="div">
+                    Mr. Poopybutthole
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    <MonitorHeartIcon sx={{ fontSize: 'small' }} /> Alive
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    <LocationOnIcon sx={{ fontSize: 'small' }} /> Earth
+                </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small">Learn More</Button>
+                <Button size="small">Learn More</Button>
             </CardActions>
-          </Card>
-          </div>
+        </Card>
     )
 }
 
-export default CharacterCard;
+export default CharacterCard

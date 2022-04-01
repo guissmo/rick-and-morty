@@ -1,16 +1,16 @@
 body {
-  background-color: #97ce4c;
+    background-color: #97ce4c;
 }
 
 .bg {
-  background-color: #e89ac7;
+    background-color: #e89ac7;
 }
 
 .centered {
-  text-align: center;
+    text-align: center;
 }
 
 .card-container {
-  padding-top: 1em;
-  padding-bottom: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }

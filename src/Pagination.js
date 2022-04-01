@@ -1,11 +1,14 @@
-import * as React from 'react';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+import React from 'react'
+import { Container, Stack } from '@mui/material'
 
-export default function BasicPagination() {
-  return (
-    <Stack spacing={2}>
-      <Pagination count={10} />
-    </Stack>
-  );
+function Pagination() {
+    return (
+        <Container sx={{ flexGrow: 1 }}>
+            <Stack padding={1} alignItems="center" justifyContent="center">
+                <Pagination count={10} />
+            </Stack>
+        </Container>
+    )
 }
+
+export default Pagination
