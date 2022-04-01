@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import "../src/css/bootstrap.min.css"
+import "../src/css/bootstrap.css"
+import "../src/css/style.css"
+import CharacterCard from './CharacterCard'
+import SearchBarAndFilter from './SearchBarAndFilter'
+import Pagination from '../src/Pagination'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <br />
+    <SearchBarAndFilter />
+    <div className="row">
+      <div className="col-lg-12">
+      <Pagination />
+      </div>
+    </div>
+    <div className="row">
+      <CharacterCard />
+      <CharacterCard />
+      <CharacterCard />
+      <CharacterCard />
+      <CharacterCard />
+      <CharacterCard />
+    </div>
+    <div className="row">
+      <div className="col-lg-12">
+      <center>
+      <Pagination />
+      </center>
+      </div>
+    </div>
     </div>
   );
 }
