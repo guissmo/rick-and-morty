@@ -19,9 +19,9 @@ function CharacterInfoPage() {
     const { id } = useParams()
 
     return (
-        <div>
+        <Container sx={{ width: 500 }}>
             <CharacterInfo id={id} />
-        </div>
+        </Container>
     )
 }
 

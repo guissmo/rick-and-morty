@@ -61,7 +61,7 @@ class InfoText extends React.Component {
         return (
             <Typography variant="body2" color="text.secondary">
                 {iconComponent} Appeared in <b>{this.text}</b> episode
-                {parseInt(this.text, 10) === '1' ? '' : 's'}.
+                {parseInt(this.text, 10) === 1 ? '' : 's'}
             </Typography>
         )
     }

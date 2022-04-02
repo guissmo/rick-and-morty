@@ -9,6 +9,7 @@ function MainPage() {
             <SearchBarAndFilter />
             <CenteredPagination />
             <CharacterCardGrid />
+            <CenteredPagination />
         </Fragment>
     )
 }

@@ -67,7 +67,7 @@ class CharacterInfo extends React.Component {
                     <Typography component="div">{this.store.name}</Typography>
                     {this.infoArray.map((x) => (
                         <InfoText
-                            key={Math.random() * 100}
+                            key={Math.random() * 100} // FIX!!!!!!!!!
                             type={x}
                             text={content[x]}
                         />

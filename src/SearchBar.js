@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Button, TextField } from '@mui/material'
+import mainStore from './CharacterGridStore'
 
 function SearchBar() {
     return (
@@ -13,8 +14,30 @@ function SearchBar() {
                 sx={{
                     mr: 2,
                 }}
+                onChange={(event) => {
+                    mainStore.search = event.target.value
+                }}
             />
-            <Button variant="contained">Search</Button>
+            <Button
+                variant="contained"
+                onClick={() => mainStore.fetchInfo()}
+                sx={{
+                    mr: 2,
+                }}
+            >
+                Search
+            </Button>
+            <Button
+                variant="contained"
+                onClick={() => {
+                    if (mainStore.search !== '') {
+                        mainStore.search = ''
+                        mainStore.fetchInfo()
+                    }
+                }}
+            >
+                Clear
+            </Button>
         </Box>
     )
 }
