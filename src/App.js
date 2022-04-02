@@ -10,18 +10,6 @@ import CharacterInfoPage from './CharacterInfoPage'
 const App = inject('routing')(
     observer(
         class App extends React.Component {
-            UNSAFE_componentWillMount() {
-                this.unlisten = this.props.history.listen(
-                    (location, action) => {
-                        console.log('on route change')
-                    }
-                )
-            }
-
-            componentWillUnmount() {
-                this.unlisten()
-            }
-
             render() {
                 const { location, push, goBack } = this.props.routing
                 return (

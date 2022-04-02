@@ -15,6 +15,7 @@ import {
 import { observer } from 'mobx-react'
 import CharacterInfoPageStore from './CharacterInfoPageStore'
 import InfoText from './InfoText'
+import routerStore from './RouterStore'
 
 class CharacterInfo extends React.Component {
     constructor(props) {
@@ -29,10 +30,11 @@ class CharacterInfo extends React.Component {
             'episodeCount',
         ]
         this.height = 500
+        console.log(routerStore.location.pathname)
         this.cardActions = (
-            <Link to={`/characters`}>
-                <Button size="small">Go back</Button>
-            </Link>
+            <Button size="small" onClick={routerStore.back}>
+                Go back
+            </Button>
         )
     }
 
