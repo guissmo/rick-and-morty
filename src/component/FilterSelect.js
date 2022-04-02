@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import { observer } from 'mobx-react'
-import mainStore from './CharacterGridStore'
+import mainStore from '../store/CharacterGridStore'
 
 export default observer(function FilterSelect() {
     return (

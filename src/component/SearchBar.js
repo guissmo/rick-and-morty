@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Button, TextField } from '@mui/material'
-import mainStore from './CharacterGridStore'
+import mainStore from '../store/CharacterGridStore'
 
 function SearchBar() {
     return (

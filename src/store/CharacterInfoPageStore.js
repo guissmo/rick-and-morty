@@ -31,6 +31,7 @@ export default class CharacterInfoPageStore {
             this.episodeCount = res.episode.length
             this.loading = false
         } catch (error) {
+            // eslint-disable-next-line no-console
             console.log('error in CharacterInfoPageStore')
         }
     })

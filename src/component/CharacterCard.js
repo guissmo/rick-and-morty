@@ -1,10 +1,7 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { PropTypes } from 'prop-types'
 import {
-    Container,
     Card,
     CardMedia,
     CardContent,
@@ -13,9 +10,9 @@ import {
     Button,
 } from '@mui/material'
 import { observer } from 'mobx-react'
-import CharacterInfoPageStore from './CharacterInfoPageStore'
+import CharacterInfoPageStore from '../store/CharacterInfoPageStore'
 import InfoText from './InfoText'
-import routerStore from './RouterStore'
+import routerStore from '../store/RouterStore'
 
 class CharacterInfo extends React.Component {
     constructor(props) {
@@ -83,6 +80,10 @@ class CharacterInfo extends React.Component {
             </Card>
         )
     }
+}
+
+CharacterInfo.propTypes = {
+    id: PropTypes.number,
 }
 
 export default observer(CharacterInfo)

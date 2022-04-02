@@ -2,9 +2,9 @@
 import React, { useEffect } from 'react'
 import { Box, Grid } from '@mui/material'
 import { observer } from 'mobx-react'
-import CharacterCard from './CharacterCard'
-import mainStore from './CharacterGridStore'
-import loadingImage from './loading.png'
+import CharacterCard from './CharacterGridCard'
+import mainStore from '../store/CharacterGridStore'
+import loadingImage from '../static/loading.png'
 
 function CharacterCardGrid() {
     useEffect(() => {

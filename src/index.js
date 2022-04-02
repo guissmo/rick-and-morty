@@ -1,22 +1,20 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import './index.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import MainPage from './MainPage'
-import CharacterInfoPage from './CharacterInfoPage'
-import router from './RouterStore'
-import './css/style.css'
+import PageCharacters from './page/Characters'
+import PageCharacterInfo from './page/CharacterInfo'
+import router from './store/RouterStore'
+import './static/style.css'
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
     <React.StrictMode>
-        {/* <Provider {...stores}> */}
         <Router history={router.history}>
             <Routes>
-                <Route exact path="/characters" element={<MainPage />} />
-                <Route path="/characters/:id" element={<CharacterInfoPage />} />
+                <Route exact path="/characters" element={<PageCharacters />} />
+                <Route path="/characters/:id" element={<PageCharacterInfo />} />
             </Routes>
         </Router>
-        {/* </Provider> */}
-    </React.StrictMode>,
-    document.getElementById('root')
+    </React.StrictMode>
 )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Stack, Pagination } from '@mui/material'
 import { observer } from 'mobx-react'
-import mainStore from './CharacterGridStore'
+import mainStore from '../store/CharacterGridStore'
 
 function CenteredPagination() {
     return (
@@ -13,7 +13,6 @@ function CenteredPagination() {
                     onChange={(e, v) => {
                         mainStore.page = v
                         mainStore.fetchInfo()
-                        console.log(v, mainStore.page)
                     }}
                 />
             </Stack>

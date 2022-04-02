@@ -1,8 +1,7 @@
 import React from 'react'
 import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
-// import CharacterInfoPageStore from './CharacterInfoPageStore'
-import CharacterInfo from './CharacterInfo'
+import CharacterInfo from './CharacterCard'
 
 class CharacterCard extends CharacterInfo {
     constructor(props) {
@@ -25,7 +24,8 @@ class CharacterCard extends CharacterInfo {
     }
 
     componentDidMount() {
-        console.log(this.id * 0)
+        // eslint-disable-next-line no-unused-vars
+        const { id } = this
     }
 }
 
