@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import CharacterCardGrid from '../component/CharacterGrid'
-import SearchBarAndFilter from '../component/Search'
+import SearchBarAndFilter from '../component/SearchCombo'
 import CenteredPagination from '../component/PaginationControlled'
 
 function MainPage() {

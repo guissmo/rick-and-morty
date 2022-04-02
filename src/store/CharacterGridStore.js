@@ -5,7 +5,7 @@ class CharacterGridStore {
     numViewable = 20
     loading = true
     search = ''
-    filter = ''
+    filter = 'none'
     page = 1
     count = 1
     images = []
@@ -14,18 +14,29 @@ class CharacterGridStore {
     ids = []
     totalPages = () => Math.ceil(this.count / this.numViewable)
 
-    fetchInfo = flow(function* fetchInfoGen() {
+    fetchInfo = flow(function* fetchInfoGen(action) {
         this.loading = true
         try {
             const apiCall = `https://rickandmortyapi.com/api/character?page=${
                 this.page
             }${this.search === '' ? '' : `&name=${this.search}`}${
-                this.filter === '' ? '' : `&status=${this.filter}`
+                this.filter === 'none' ? '' : `&status=${this.filter}`
             }`
-            // BUG ABOUT SEARCH
+
+            if (action === 'search') {
+                this.page = 1
+                this.search = ''
+            }
+            console.log(action, this.search)
+
             const summary = yield fetch(apiCall)
                 .then((response) => response.json())
                 .then((data) => data)
+
+            if (summary.error && this.page !== 1) {
+                this.page = 1
+                this.fetchInfo()
+            }
             const res = summary.results
             this.page = Math.min(this.totalPages(), this.page)
             this.count = summary.info.count
@@ -48,7 +59,7 @@ class CharacterGridStore {
             this.loading = false
         } catch (error) {
             // eslint-disable-next-line no-console
-            console.log('hi')
+            console.log(error, 'hi')
         }
     })
 

@@ -13,6 +13,7 @@ import { observer } from 'mobx-react'
 import CharacterInfoPageStore from '../store/CharacterInfoPageStore'
 import InfoText from './InfoText'
 import routerStore from '../store/RouterStore'
+import mainStore from '../store/CharacterGridStore'
 
 class CharacterInfo extends React.Component {
     constructor(props) {
@@ -40,7 +41,7 @@ class CharacterInfo extends React.Component {
     }
 
     render() {
-        if (this.store.loading) {
+        if (mainStore.loading) {
             return 'Loading...'
         }
 

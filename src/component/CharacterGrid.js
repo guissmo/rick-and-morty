@@ -27,6 +27,7 @@ function CharacterCardGrid() {
                                     key={1000 + x}
                                     className="flex-column-parent"
                                     lg={2}
+                                    style={{ maxWidth: 300 }}
                                 >
                                     <CharacterCard
                                         key={x}

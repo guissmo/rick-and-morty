@@ -31,10 +31,9 @@ function SearchBar() {
             <Button
                 variant="contained"
                 onClick={() => {
-                    if (mainStore.search !== '') {
-                        mainStore.search = ''
-                        mainStore.fetchInfo()
-                    }
+                    mainStore.search = ''
+                    document.getElementById('outlined-search').value = ''
+                    mainStore.fetchInfo('search')
                 }}
             >
                 Clear
