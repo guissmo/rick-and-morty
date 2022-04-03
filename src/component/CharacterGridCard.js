@@ -44,9 +44,9 @@ class CharacterGridCard extends React.Component {
                 <Card className="flex-column-parent flexer">
                     <Skeleton
                         variant="rectangular"
-                        width={500}
                         height={this.height}
                         animation="wave"
+                        sx={{ width: '100%', minWidth: '252px' }}
                     />
                     <CardContent className="flexer">
                         <Typography component="div" variant="h5">
@@ -92,9 +92,9 @@ class CharacterGridCard extends React.Component {
                     ) : (
                         <Skeleton
                             variant="rectangular"
-                            width={500}
                             height={this.height}
                             animation="wave"
+                            sx={{ width: '100%', minWidth: '252px' }}
                         />
                     )}
                     <img

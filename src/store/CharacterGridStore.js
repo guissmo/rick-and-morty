@@ -23,27 +23,27 @@ class CharacterGridStore {
             }${this.search === '' ? '' : `&name=${this.search}`}${
                 this.filter === 'none' ? '' : `&status=${this.filter}`
             }`
-
-            if (action === 'search') {
-                this.page = 1
-            }
-
             const summary = yield fetch(apiCall)
                 .then((response) => response.json())
                 .then((data) => data)
 
+            if (summary.error && this.page === 1) {
+                this.error = summary.error
+                this.page = 1
+                this.count = 0
+                this.loading = false
+                return
+            }
             if (summary.error && this.page !== 1) {
                 this.page = 1
                 this.fetchInfo()
             }
-            if (summary.error) {
-                this.error = summary.error
-                this.loading = false
-                return
-            }
             this.error = ''
             const res = summary.results
             this.page = Math.min(this.totalPages(), this.page)
+            if (action === 'search') {
+                this.page = 1
+            }
             this.count = summary.info.count
             this.images = []
             this.names = []

@@ -105,7 +105,7 @@ class CharacterCard extends React.Component {
                     src={infoStore.image}
                     onLoad={() => this.setState({ imageLoaded: true })}
                 />
-                <CardContent>
+                <CardContent sx={{ height: 180 }}>
                     <Typography component="div" variant="h5">
                         {infoStore.name}
                     </Typography>

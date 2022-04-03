@@ -9,7 +9,7 @@ import mainStore from '../store/CharacterGridStore'
 export default observer(function FilterSelect() {
     return (
         <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel id="filter-label">Filter</InputLabel>
+            <InputLabel id="filter-label">Status</InputLabel>
             <Select
                 labelId="filter-label"
                 id="select-label"

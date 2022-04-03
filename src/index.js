@@ -14,6 +14,7 @@ root.render(
             <Routes>
                 <Route exact path="/characters" element={<PageCharacters />} />
                 <Route path="/characters/:id" element={<PageCharacterInfo />} />
+                <Route path="*" element={'I know how to make 404 pages!'} />
             </Routes>
         </Router>
     </React.StrictMode>

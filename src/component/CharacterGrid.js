@@ -25,7 +25,7 @@ function CharacterCardGrid() {
                         lg={12}
                         style={{ textAlign: 'center' }}
                     >
-                        <Typography variant="h1">
+                        <Typography variant="h1" style={{ fontWeight: 900 }}>
                             Nothing found in this dimension.
                         </Typography>
                         <Typography variant="h2">
@@ -64,7 +64,7 @@ function CharacterCardGrid() {
                                 item
                                 key={1000 + x}
                                 className="flex-column-parent"
-                                lg={2}
+                                lg={3}
                                 style={{ maxWidth: 300 }}
                             >
                                 <CharacterCard
@@ -72,7 +72,6 @@ function CharacterCardGrid() {
                                     name={x}
                                     status={x}
                                     id={x}
-                                    image={loadingImage}
                                 />
                             </Grid>
                         )
@@ -94,7 +93,7 @@ function CharacterCardGrid() {
                         <Grid
                             item
                             key={mainStore.ids[x]}
-                            xl={2}
+                            lg={3}
                             className="flex-column-parent"
                             style={{ maxWidth: 300 }}
                         >

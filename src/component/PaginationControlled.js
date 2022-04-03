@@ -9,6 +9,7 @@ function CenteredPagination() {
             <Stack padding={1} alignItems="center" justifyContent="center">
                 <Pagination
                     count={mainStore.totalPages()}
+                    color="primary"
                     page={mainStore.page}
                     onChange={(e, v) => {
                         mainStore.page = v

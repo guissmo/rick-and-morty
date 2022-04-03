@@ -1,17 +1,18 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { observer } from 'mobx-react'
+import { Container } from '@mui/material'
 import CharacterCardGrid from '../component/CharacterGrid'
-import SearchBarAndFilter from '../component/SearchCombo'
+import SearchStatus from '../component/SearchStatus'
 import CenteredPagination from '../component/PaginationControlled'
 
 function MainPage() {
     return (
-        <Fragment>
-            <SearchBarAndFilter />
+        <Container sx={{ maxWidth: 900 }}>
+            <SearchStatus />
             <CenteredPagination />
             <CharacterCardGrid />
             <CenteredPagination />
-        </Fragment>
+        </Container>
     )
 }
 
