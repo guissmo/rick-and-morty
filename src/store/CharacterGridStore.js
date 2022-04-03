@@ -57,6 +57,7 @@ class CharacterGridStore {
             this.statuses = []
             this.origins = []
             this.ids = []
+            /* GET RID OF THIS FOR LOOP! */
             for (
                 let i = 0;
                 i < Math.min(this.numViewable, res.length);
