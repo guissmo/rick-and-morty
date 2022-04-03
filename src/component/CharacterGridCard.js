@@ -19,7 +19,7 @@ class CharacterGridCard extends React.Component {
     constructor(props) {
         super(props)
         this.id = this.props.id
-        this.store = {
+        this.data = {
             name: this.props.name,
             status: this.props.status,
             origin: this.props.origin,
@@ -28,11 +28,6 @@ class CharacterGridCard extends React.Component {
         this.infoArray = ['status', 'origin']
         this.height = 300
         this.linkHref = `/characters/${this.id}`
-        this.cardActions = (
-            <Link to={this.linkHref}>
-                <Button size="small">More info</Button>
-            </Link>
-        )
         this.state = {
             imageLoaded: false,
         }
@@ -46,7 +41,7 @@ class CharacterGridCard extends React.Component {
                         variant="rectangular"
                         height={this.height}
                         animation="wave"
-                        sx={{ width: '100%', minWidth: '252px' }}
+                        width={300}
                     />
                     <CardContent className="flexer">
                         <Typography component="div" variant="h5">
@@ -65,12 +60,12 @@ class CharacterGridCard extends React.Component {
         }
 
         const content = {
-            status: this.store.status,
-            type: this.store.type,
-            species: this.store.species,
-            location: this.store.location,
-            origin: this.store.origin,
-            episodeCount: this.store.episodeCount,
+            status: this.data.status,
+            type: this.data.type,
+            species: this.data.species,
+            location: this.data.location,
+            origin: this.data.origin,
+            episodeCount: this.data.episodeCount,
         }
 
         return (
@@ -84,8 +79,9 @@ class CharacterGridCard extends React.Component {
                             <CardMedia
                                 component="img"
                                 height={this.height}
-                                image={this.store.image}
-                                alt={this.store.name}
+                                width={300}
+                                image={this.data.image}
+                                alt={this.data.name}
                                 style={{ backgroundSize: 'cover' }}
                             />
                         </Fade>
@@ -94,18 +90,18 @@ class CharacterGridCard extends React.Component {
                             variant="rectangular"
                             height={this.height}
                             animation="wave"
-                            sx={{ width: '100%', minWidth: '252px' }}
+                            width={300}
                         />
                     )}
                     <img
                         style={{ display: 'none' }}
-                        src={this.store.image}
+                        src={this.data.image}
                         onLoad={() => this.setState({ imageLoaded: true })}
                     />
                 </Link>
                 <CardContent className="flexer">
                     <Typography component="div" variant="h5">
-                        {this.store.name}
+                        {this.data.name}
                     </Typography>
                     {this.infoArray.map((x) => (
                         <InfoText
@@ -115,7 +111,11 @@ class CharacterGridCard extends React.Component {
                         />
                     ))}
                 </CardContent>
-                <CardActions>{this.cardActions}</CardActions>
+                <CardActions>
+                    <Link to={this.linkHref}>
+                        <Button size="small">More info</Button>
+                    </Link>
+                </CardActions>
             </Card>
         )
     }

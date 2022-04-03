@@ -15,6 +15,13 @@ class CharacterGridStore {
     error = ''
     totalPages = () => Math.ceil(this.count / this.numViewable)
 
+    clearFilters = () => {
+        this.search = ''
+        this.filter = 'none'
+        document.getElementById('outlined-search').value = ''
+        this.fetchInfo('search')
+    }
+
     fetchInfo = flow(function* fetchInfoGen(action) {
         this.loading = true
         try {

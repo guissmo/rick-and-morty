@@ -29,6 +29,7 @@ body {
     flex: 1;
 }
 
-.aaaa {
-    background-color: black;
+.search-status-text {
+    font-weight: 300;
+    padding: 2;
 }
