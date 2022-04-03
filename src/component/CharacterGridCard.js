@@ -1,9 +1,21 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
-import { Button } from '@mui/material'
+import {
+    Button,
+    Card,
+    CardMedia,
+    CardContent,
+    Typography,
+    CardActions,
+    Skeleton,
+} from '@mui/material'
+import { observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
-import CharacterInfo from './CharacterCard'
+import Fade from '@material-ui/core/Fade'
+import InfoText from './InfoText'
+import mainStore from '../store/CharacterGridStore'
 
-class CharacterCard extends CharacterInfo {
+class CharacterGridCard extends React.Component {
     constructor(props) {
         super(props)
         this.id = this.props.id
@@ -21,12 +33,92 @@ class CharacterCard extends CharacterInfo {
                 <Button size="small">More info</Button>
             </Link>
         )
+        this.state = {
+            imageLoaded: false,
+        }
     }
 
-    componentDidMount() {
-        // eslint-disable-next-line no-unused-vars
-        const { id } = this
+    render() {
+        if (mainStore.loading) {
+            return (
+                <Card className="flex-column-parent flexer">
+                    <Skeleton
+                        variant="rectangular"
+                        width={500}
+                        height={this.height}
+                        animation="wave"
+                    />
+                    <CardContent className="flexer">
+                        <Typography component="div" variant="h5">
+                            <Skeleton animation="wave" />
+                        </Typography>
+                        {this.infoArray.map(() => (
+                            <Skeleton
+                                key={10000 + Math.random() * 100}
+                                animation="wave"
+                            />
+                        ))}
+                    </CardContent>
+                    <CardActions>{this.cardActions}</CardActions>
+                </Card>
+            )
+        }
+
+        const content = {
+            status: this.store.status,
+            type: this.store.type,
+            species: this.store.species,
+            location: this.store.location,
+            origin: this.store.origin,
+            episodeCount: this.store.episodeCount,
+        }
+
+        return (
+            <Card className="flex-column-parent flexer">
+                <Link className="flex-column-parent flexer" to={this.linkHref}>
+                    {this.state.imageLoaded ? (
+                        <Fade
+                            in={this.state.imageLoaded}
+                            timeout={Math.random() * 200 + 800}
+                        >
+                            <CardMedia
+                                component="img"
+                                height={this.height}
+                                image={this.store.image}
+                                alt={this.store.name}
+                                style={{ backgroundSize: 'cover' }}
+                            />
+                        </Fade>
+                    ) : (
+                        <Skeleton
+                            variant="rectangular"
+                            width={500}
+                            height={this.height}
+                            animation="wave"
+                        />
+                    )}
+                    <img
+                        style={{ display: 'none' }}
+                        src={this.store.image}
+                        onLoad={() => this.setState({ imageLoaded: true })}
+                    />
+                </Link>
+                <CardContent className="flexer">
+                    <Typography component="div" variant="h5">
+                        {this.store.name}
+                    </Typography>
+                    {this.infoArray.map((x) => (
+                        <InfoText
+                            key={10000 + Math.random() * 100} // FIX!!!!!!!!!
+                            type={x}
+                            text={content[x]}
+                        />
+                    ))}
+                </CardContent>
+                <CardActions>{this.cardActions}</CardActions>
+            </Card>
+        )
     }
 }
 
-export default CharacterCard
+export default observer(CharacterGridCard)

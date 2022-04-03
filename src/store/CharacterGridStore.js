@@ -12,6 +12,7 @@ class CharacterGridStore {
     names = []
     statuses = []
     ids = []
+    error = ''
     totalPages = () => Math.ceil(this.count / this.numViewable)
 
     fetchInfo = flow(function* fetchInfoGen(action) {
@@ -25,9 +26,7 @@ class CharacterGridStore {
 
             if (action === 'search') {
                 this.page = 1
-                this.search = ''
             }
-            console.log(action, this.search)
 
             const summary = yield fetch(apiCall)
                 .then((response) => response.json())
@@ -37,6 +36,12 @@ class CharacterGridStore {
                 this.page = 1
                 this.fetchInfo()
             }
+            if (summary.error) {
+                this.error = summary.error
+                this.loading = false
+                return
+            }
+            this.error = ''
             const res = summary.results
             this.page = Math.min(this.totalPages(), this.page)
             this.count = summary.info.count
@@ -59,7 +64,7 @@ class CharacterGridStore {
             this.loading = false
         } catch (error) {
             // eslint-disable-next-line no-console
-            console.log(error, 'hi')
+            console.log(error.message)
         }
     })
 

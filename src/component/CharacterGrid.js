@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react'
-import { Box, Grid } from '@mui/material'
+import { Box, Grid, Button, Typography } from '@mui/material'
 import { observer } from 'mobx-react'
 import CharacterCard from './CharacterGridCard'
 import mainStore from '../store/CharacterGridStore'
@@ -10,6 +10,45 @@ function CharacterCardGrid() {
     useEffect(() => {
         mainStore.fetchInfo()
     }, [])
+    if (mainStore.error !== '') {
+        return (
+            <Box sx={{ flex: 1 }} padding={1}>
+                <Grid
+                    container
+                    spacing={5}
+                    justifyContent="center"
+                    alignItems="stretch"
+                >
+                    <Grid
+                        item
+                        key={1000}
+                        lg={12}
+                        style={{ textAlign: 'center' }}
+                    >
+                        <Typography variant="h1">
+                            Nothing found in this dimension.
+                        </Typography>
+                        <Typography variant="h2">
+                            Clear the filters and start from scratch?
+                        </Typography>
+                        <Button
+                            variant="contained"
+                            onClick={() => {
+                                mainStore.search = ''
+                                mainStore.filter = 'none'
+                                document.getElementById(
+                                    'outlined-search'
+                                ).value = ''
+                                mainStore.fetchInfo('search')
+                            }}
+                        >
+                            Clear
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Box>
+        )
+    }
     if (mainStore.loading) {
         return (
             <Box sx={{ flex: 1 }} padding={1}>
@@ -19,27 +58,25 @@ function CharacterCardGrid() {
                     justifyContent="center"
                     alignItems="stretch"
                 >
-                    {Array.from(Array(mainStore.numViewable).keys()).map(
-                        (x) => {
-                            return (
-                                <Grid
-                                    item
-                                    key={1000 + x}
-                                    className="flex-column-parent"
-                                    lg={2}
-                                    style={{ maxWidth: 300 }}
-                                >
-                                    <CharacterCard
-                                        key={x}
-                                        name={x}
-                                        status={x}
-                                        id={x}
-                                        image={loadingImage}
-                                    />
-                                </Grid>
-                            )
-                        }
-                    )}
+                    {Array.from(Array(20).keys()).map((x) => {
+                        return (
+                            <Grid
+                                item
+                                key={1000 + x}
+                                className="flex-column-parent"
+                                lg={2}
+                                style={{ maxWidth: 300 }}
+                            >
+                                <CharacterCard
+                                    key={x}
+                                    name={x}
+                                    status={x}
+                                    id={x}
+                                    image={loadingImage}
+                                />
+                            </Grid>
+                        )
+                    })}
                 </Grid>
             </Box>
         )

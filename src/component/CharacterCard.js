@@ -1,6 +1,5 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { PropTypes } from 'prop-types'
 import {
     Card,
     CardMedia,
@@ -8,17 +7,18 @@ import {
     Typography,
     CardActions,
     Button,
+    Skeleton,
 } from '@mui/material'
 import { observer } from 'mobx-react'
-import CharacterInfoPageStore from '../store/CharacterInfoPageStore'
+import Fade from '@material-ui/core/Fade'
+import infoStore from '../store/CharacterInfoPageStore'
 import InfoText from './InfoText'
 import routerStore from '../store/RouterStore'
-import mainStore from '../store/CharacterGridStore'
 
-class CharacterInfo extends React.Component {
+class CharacterCard extends React.Component {
     constructor(props) {
         super(props)
-        this.store = new CharacterInfoPageStore(this.props.id)
+        infoStore.fetchInfo(this.props.id)
         this.infoArray = [
             'status',
             'type',
@@ -34,46 +34,86 @@ class CharacterInfo extends React.Component {
                 Go back
             </Button>
         )
-    }
-
-    componentDidMount() {
-        this.store.fetchInfo()
+        this.state = {
+            imageLoaded: false,
+        }
     }
 
     render() {
-        if (mainStore.loading) {
-            return 'Loading...'
+        if (infoStore.loading) {
+            return (
+                <Card>
+                    <Skeleton
+                        variant="rectangular"
+                        width={500}
+                        height={this.height}
+                        animation="wave"
+                    />
+                    <CardContent>
+                        <Typography component="div" variant="h5">
+                            <Skeleton animation="wave" />
+                        </Typography>
+                        {Array.from(Array(this.infoArray.length).keys()).map(
+                            (x) => (
+                                <Skeleton animation="wave" key={x} />
+                            )
+                        )}
+                    </CardContent>
+                    <CardActions>{this.cardActions}</CardActions>
+                </Card>
+            )
         }
 
         const content = {
-            status: this.store.status,
-            type: this.store.type,
-            species: this.store.species,
-            location: this.store.location,
-            origin: this.store.origin,
-            episodeCount: this.store.episodeCount,
+            status: infoStore.status,
+            type: infoStore.type,
+            species: infoStore.species,
+            location: infoStore.location,
+            origin: infoStore.origin,
+            episodeCount: infoStore.episodeCount,
         }
 
         return (
-            <Card className="flex-column-parent flexer">
-                <Link className="flex-column-parent flexer" to={this.linkHref}>
-                    <CardMedia
-                        component="img"
+            <Card>
+                {this.state.imageLoaded ? (
+                    <Fade
+                        in={this.state.imageLoaded}
+                        timeout={Math.random() * 200 + 800}
+                    >
+                        <CardMedia
+                            component="img"
+                            height={this.height}
+                            image={infoStore.image}
+                            alt={infoStore.name}
+                            style={{
+                                backgroundSize: 'cover',
+                                cursor: 'pointer',
+                            }}
+                            onClick={routerStore.back}
+                        />
+                    </Fade>
+                ) : (
+                    <Skeleton
+                        variant="rectangular"
+                        width={500}
                         height={this.height}
-                        image={this.store.image}
-                        alt={this.store.name}
-                        style={{ backgroundSize: 'cover' }}
+                        animation="wave"
                     />
-                </Link>
-                <CardContent className="flexer">
+                )}
+                <img
+                    style={{ display: 'none' }}
+                    src={infoStore.image}
+                    onLoad={() => this.setState({ imageLoaded: true })}
+                />
+                <CardContent>
                     <Typography component="div" variant="h5">
-                        {this.store.name}
+                        {infoStore.name}
                     </Typography>
                     {this.infoArray.map((x) => (
                         <InfoText
-                            key={Math.random() * 100} // FIX!!!!!!!!!
+                            key={10000 + Math.random() * 100} // FIX!!!!!!!!!
                             type={x}
-                            text={content[x]}
+                            text={String(content[x])}
                         />
                     ))}
                 </CardContent>
@@ -83,8 +123,4 @@ class CharacterInfo extends React.Component {
     }
 }
 
-CharacterInfo.propTypes = {
-    id: PropTypes.number,
-}
-
-export default observer(CharacterInfo)
+export default observer(CharacterCard)

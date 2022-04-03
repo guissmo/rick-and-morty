@@ -1,7 +1,7 @@
 /* eslint-disable lines-between-class-members */
 import { makeAutoObservable, flow } from 'mobx'
 
-export default class CharacterInfoPageStore {
+class CharacterInfoPageStore {
     id
     loading = true
     name = ''
@@ -13,14 +13,15 @@ export default class CharacterInfoPageStore {
     origin = ''
     episodeCount = 0
 
-    fetchInfo = flow(function* fetchInfoGen() {
+    fetchInfo = flow(function* fetchInfoGen2(id) {
         this.loading = true
+        this.id = id
+        const apiUrl = `https://rickandmortyapi.com/api/character/${this.id}`
         try {
-            const res = yield fetch(
-                `https://rickandmortyapi.com/api/character/${this.id}`
-            )
+            const res = yield fetch(apiUrl)
                 .then((response) => response.json())
                 .then((data) => data)
+            this.loading = false
             this.name = res.name
             this.image = res.image
             this.status = res.status
@@ -29,10 +30,9 @@ export default class CharacterInfoPageStore {
             this.location = res.location.name
             this.origin = res.origin.name
             this.episodeCount = res.episode.length
-            this.loading = false
         } catch (error) {
             // eslint-disable-next-line no-console
-            console.log('error in CharacterInfoPageStore')
+            console.log(error, 'error in CharacterInfoPageStore')
         }
     })
 
@@ -41,3 +41,7 @@ export default class CharacterInfoPageStore {
         makeAutoObservable(this)
     }
 }
+
+const characterInfoPageStore = new CharacterInfoPageStore()
+
+export default characterInfoPageStore

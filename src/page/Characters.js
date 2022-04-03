@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import { observer } from 'mobx-react'
 import CharacterCardGrid from '../component/CharacterGrid'
 import SearchBarAndFilter from '../component/SearchCombo'
 import CenteredPagination from '../component/PaginationControlled'
@@ -14,4 +15,4 @@ function MainPage() {
     )
 }
 
-export default MainPage
+export default observer(MainPage)

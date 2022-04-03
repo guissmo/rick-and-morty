@@ -20,23 +20,13 @@ function SearchBar() {
                 onClick={() => {
                     mainStore.search =
                         document.getElementById('outlined-search').value
-                    mainStore.fetchInfo()
+                    mainStore.fetchInfo('search')
                 }}
                 sx={{
                     mr: 2,
                 }}
             >
                 Search
-            </Button>
-            <Button
-                variant="contained"
-                onClick={() => {
-                    mainStore.search = ''
-                    document.getElementById('outlined-search').value = ''
-                    mainStore.fetchInfo('search')
-                }}
-            >
-                Clear
             </Button>
         </Box>
     )

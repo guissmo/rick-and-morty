@@ -13,19 +13,17 @@ export default observer(function FilterSelect() {
             <Select
                 labelId="filter-label"
                 id="select-label"
-                value={
-                    mainStore.filter === 'none' ? 'No Filter' : mainStore.filter
-                }
+                value={mainStore.filter}
                 onChange={(e, v) => {
                     mainStore.filter = v.props.value
                     mainStore.fetchInfo()
                 }}
-                label="Filter"
+                label="Status"
             >
-                <MenuItem value={'none'}>No Filter</MenuItem>
-                <MenuItem value={'alive'}>Alive</MenuItem>
-                <MenuItem value={'dead'}>Dead</MenuItem>
-                <MenuItem value={'unknown'}>Unknown</MenuItem>
+                <MenuItem value={'none'}>all</MenuItem>
+                <MenuItem value={'alive'}>alive</MenuItem>
+                <MenuItem value={'dead'}>dead</MenuItem>
+                <MenuItem value={'unknown'}>unknown status</MenuItem>
             </Select>
         </FormControl>
     )
