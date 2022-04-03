@@ -13,7 +13,7 @@ import { observer } from 'mobx-react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import SearchStatus from './SearchStatus'
 import SearchBar from './SearchBar'
-import Filter from './Filter'
+import FilterSelect from './FilterSelect'
 
 function Search() {
     return (
@@ -61,7 +61,7 @@ function Search() {
                                     alignItems="center"
                                     justifyContent="center"
                                 >
-                                    <Filter lg={4} />
+                                    <FilterSelect lg={4} />
                                     <SearchBar xl={8} />
                                 </Stack>
                             </Box>

@@ -24,14 +24,31 @@ function CharacterCardGrid() {
         </Grid>
     )
 
-    const somethingFound = (
-        <Grid
-            container
-            spacing={5}
-            justifyContent="center"
-            alignItems="stretch"
-        >
-            {Array.from(Array(mainStore.ids.length).keys()).map((x) => {
+    if (mainStore.error !== '') {
+        return (
+            <Box sx={{ flex: 1 }} padding={1}>
+                {nothingFound}
+            </Box>
+        )
+    }
+
+    let somethingFound = Array.from(Array(20).keys()).map((x) => {
+        return (
+            <Grid
+                item
+                key={x}
+                lg={3}
+                className="flex-column-parent"
+                sx={{ maxWidth: 300 }}
+            >
+                <CharacterCard loading key={x} />
+            </Grid>
+        )
+    })
+
+    if (!mainStore.loading) {
+        somethingFound = Array.from(Array(mainStore.ids.length).keys()).map(
+            (x) => {
                 return (
                     <Grid
                         item
@@ -50,12 +67,19 @@ function CharacterCardGrid() {
                         />
                     </Grid>
                 )
-            })}
-        </Grid>
-    )
+            }
+        )
+    }
     return (
         <Box sx={{ flex: 1 }} padding={1}>
-            {mainStore.error === '' ? somethingFound : nothingFound}
+            <Grid
+                container
+                spacing={5}
+                justifyContent="center"
+                alignItems="stretch"
+            >
+                {somethingFound}
+            </Grid>
         </Box>
     )
 }

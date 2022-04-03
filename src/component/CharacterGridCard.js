@@ -1,19 +1,8 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from 'react'
-import {
-    Button,
-    Card,
-    CardMedia,
-    CardContent,
-    Typography,
-    CardActions,
-    Skeleton,
-} from '@mui/material'
+import { Button, Card, CardContent, CardActions } from '@mui/material'
 import { observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
-import Fade from '@material-ui/core/Fade'
-import InfoText from './InfoText'
 import mainStore from '../store/CharacterGridStore'
 import CharacterGridCardImage from './CharacterGridCardImage'
 import CharacterGridCardText from './CharacterGridCardText'
@@ -34,10 +23,15 @@ class CharacterGridCard extends React.Component {
     render() {
         return (
             <Card className="flex-column-parent flexer">
-                <CharacterGridCardImage
-                    image={this.data.image}
-                    linkTo={`/characters/${this.id}`}
-                />
+                <Link
+                    className="flex-column-parent flexer"
+                    to={`/characters/${this.id}`}
+                >
+                    <CharacterGridCardImage
+                        image={this.data.image}
+                        loading={mainStore.loading}
+                    />
+                </Link>
                 <CardContent className="flexer">
                     {Array.from(Array(this.infoArray.length).keys()).map(
                         (x) => {
@@ -46,6 +40,7 @@ class CharacterGridCard extends React.Component {
                                     key={x}
                                     type={this.infoArray[x]}
                                     text={this.data[this.infoArray[x]]}
+                                    loading={mainStore.loading}
                                 />
                             )
                         }

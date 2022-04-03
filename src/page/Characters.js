@@ -11,7 +11,6 @@ function MainPage() {
             <Search />
             <Paginator />
             <CharacterGrid />
-            <Paginator />
         </Container>
     )
 }

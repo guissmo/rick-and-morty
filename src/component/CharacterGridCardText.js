@@ -8,7 +8,6 @@ import MonitorHeartIcon from '@mui/icons-material/MonitorHeart'
 import PetsIcon from '@mui/icons-material/Pets'
 import BiotechIcon from '@mui/icons-material/Biotech'
 import TvIcon from '@mui/icons-material/Tv'
-import mainStore from '../store/CharacterGridStore'
 
 function MyIcon(props) {
     const sx = { fontSize: 'small' }
@@ -31,7 +30,7 @@ function MyIcon(props) {
 }
 
 function MyActualText(props) {
-    if (props.myType === 'episodes') {
+    if (props.myType === 'episodeCount') {
         return (
             <span>
                 Appeared in <b>{props.myText}</b> episode
@@ -55,7 +54,7 @@ function MyActualText(props) {
 
 class CharacterGridCardText extends React.Component {
     render() {
-        if (mainStore.loading) return <Skeleton animation="wave" />
+        if (this.props.loading) return <Skeleton animation="wave" />
         const variant = this.props.type === 'name' ? 'h5' : 'body2'
         let content = this.props.text
         if (this.props.type !== 'name' && this.props.type !== 'episodes') {

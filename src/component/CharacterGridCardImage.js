@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { CardMedia, Skeleton } from '@mui/material'
 import { observer } from 'mobx-react'
 import Fade from '@material-ui/core/Fade'
-import mainStore from '../store/CharacterGridStore'
 
 class CharacterGridCardImage extends React.Component {
     constructor(props) {
@@ -23,7 +21,7 @@ class CharacterGridCardImage extends React.Component {
                 width={300}
             />
         )
-        if (!mainStore.loading && this.state.imageLoaded) {
+        if (!this.props.loading && this.state.imageLoaded) {
             cardMedia = (
                 <Fade
                     in={this.state.imageLoaded}
@@ -40,14 +38,14 @@ class CharacterGridCardImage extends React.Component {
             )
         }
         return (
-            <Link className="flex-column-parent flexer" to={this.props.linkTo}>
+            <span>
                 {cardMedia}
                 <img
                     style={{ display: 'none' }}
                     src={this.props.image}
                     onLoad={() => this.setState({ imageLoaded: true })}
                 />
-            </Link>
+            </span>
         )
     }
 }
