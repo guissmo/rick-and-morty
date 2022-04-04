@@ -49,6 +49,7 @@ class CharacterGridCardImage extends React.Component {
                     style={{ display: 'none' }}
                     src={this.props.image}
                     onLoad={() => this.setState({ imageLoaded: true })}
+                    alt="Loading image..."
                 />
             </span>
         )

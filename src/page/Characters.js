@@ -4,6 +4,7 @@ import { Container } from '@mui/material'
 import CharacterGrid from '../component/CharacterGrid'
 import Search from '../component/Search'
 import Paginator from '../component/Paginator'
+import BackToTop from '../component/BackToTop'
 
 function MainPage() {
     return (
@@ -11,6 +12,7 @@ function MainPage() {
             <Search />
             <Paginator />
             <CharacterGrid />
+            <BackToTop />
         </Container>
     )
 }
