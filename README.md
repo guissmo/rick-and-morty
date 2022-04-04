@@ -1,4 +1,6 @@
-This is Jared Guissmo Asuncion's technical exam.
+This is Guissmo's attempt at a Rick and Morty API Front End
+
+# Installation
 
 ## Development
 
