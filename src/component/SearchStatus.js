@@ -5,8 +5,13 @@ import mainStore from '../store/CharacterGridStore'
 
 function SearchStatus() {
     return (
-        <Typography align="center" variant="h5" className="search-status-text">
-            You are looking at the list of all{' '}
+        <Typography
+            align="center"
+            variant="h5"
+            className="search-status-text"
+            sx={{ mb: 2 }}
+        >
+            This is the list of all{' '}
             {mainStore.filter === 'none' ? (
                 ''
             ) : (

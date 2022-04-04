@@ -19,6 +19,8 @@ class CharacterGridCardImage extends React.Component {
                 height={300}
                 animation="wave"
                 width={300}
+                sx={{ cursor: 'pointer' }}
+                onClick={this.props.onClick ? this.props.onClick : () => {}}
             />
         )
         if (!this.props.loading && this.state.imageLoaded) {
@@ -32,7 +34,10 @@ class CharacterGridCardImage extends React.Component {
                         height={300}
                         width={300}
                         image={this.props.image}
-                        style={{ backgroundSize: 'cover' }}
+                        sx={{ backgroundSize: 'cover', cursor: 'pointer' }}
+                        onClick={
+                            this.props.onClick ? this.props.onClick : () => {}
+                        }
                     />
                 </Fade>
             )

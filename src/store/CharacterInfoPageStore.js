@@ -11,6 +11,7 @@ class CharacterInfoPageStore {
     species = ''
     location = ''
     origin = ''
+    error = ''
     episodeCount = 0
 
     fetchInfo = flow(function* fetchInfoGen2(id) {
@@ -21,6 +22,12 @@ class CharacterInfoPageStore {
             const res = yield fetch(apiUrl)
                 .then((response) => response.json())
                 .then((data) => data)
+            if (res.error) {
+                this.error = res.error
+                console.log(res.error)
+                return
+            }
+            this.error = ''
             this.loading = false
             this.name = res.name
             this.image = res.image

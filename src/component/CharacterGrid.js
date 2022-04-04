@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react'
 import { Box, Grid, Button, Typography } from '@mui/material'
 import { observer } from 'mobx-react'
@@ -11,7 +10,7 @@ function CharacterCardGrid() {
     }, [])
 
     const nothingFound = (
-        <Grid item key={1000} lg={12} sx={{ textAlign: 'center' }}>
+        <Grid item lg={12} sx={{ textAlign: 'center' }}>
             <Typography variant="h1" sx={{ fontWeight: 900 }}>
                 Nothing found in this dimension.
             </Typography>
@@ -47,23 +46,23 @@ function CharacterCardGrid() {
     })
 
     if (!mainStore.loading) {
-        somethingFound = Array.from(Array(mainStore.ids.length).keys()).map(
+        somethingFound = Array.from(Array(mainStore.getCount()).keys()).map(
             (x) => {
                 return (
                     <Grid
                         item
-                        key={mainStore.ids[x]}
+                        key={mainStore.getId(x)}
                         lg={3}
                         className="flex-column-parent"
                         sx={{ maxWidth: 300 }}
                     >
                         <CharacterCard
                             key={x}
-                            name={mainStore.names[x]}
-                            status={mainStore.statuses[x]}
-                            id={mainStore.ids[x]}
-                            origin={mainStore.origins[x]}
-                            image={mainStore.images[x]}
+                            name={mainStore.getName(x)}
+                            status={mainStore.getStatus(x)}
+                            id={mainStore.getId(x)}
+                            origin={mainStore.getOrigin(x)}
+                            image={mainStore.getImage(x)}
                         />
                     </Grid>
                 )

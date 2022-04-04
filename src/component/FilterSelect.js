@@ -16,10 +16,7 @@ export default observer(function FilterSelect() {
                     labelId="filter-label"
                     id="select-label"
                     value={mainStore.filter}
-                    onChange={(e, v) => {
-                        mainStore.filter = v.props.value
-                        mainStore.fetchInfo()
-                    }}
+                    onChange={(e, v) => mainStore.changeFilter(v.props.value)}
                     label="Status"
                 >
                     <MenuItem value={'none'}>all</MenuItem>

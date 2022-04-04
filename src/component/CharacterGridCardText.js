@@ -57,7 +57,11 @@ class CharacterGridCardText extends React.Component {
         if (this.props.loading) return <Skeleton animation="wave" />
         const variant = this.props.type === 'name' ? 'h5' : 'body2'
         let content = this.props.text
-        if (this.props.type !== 'name' && this.props.type !== 'episodes') {
+        if (
+            this.props.type !== 'name' &&
+            this.props.text !== '' &&
+            this.props.type !== 'episodes'
+        ) {
             content = (
                 <span>
                     <MyIcon myType={this.props.type} />{' '}

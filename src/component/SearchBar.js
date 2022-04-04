@@ -21,18 +21,18 @@ function SearchBar() {
                 }}
                 onKeyPress={(e) => {
                     if (e.key === 'Enter') {
-                        mainStore.search =
+                        mainStore.searchFor(
                             document.getElementById('outlined-search').value
-                        mainStore.fetchInfo('search')
+                        )
                     }
                 }}
             />
             <Button
                 variant="contained"
                 onClick={() => {
-                    mainStore.search =
+                    mainStore.searchFor(
                         document.getElementById('outlined-search').value
-                    mainStore.fetchInfo('search')
+                    )
                 }}
                 sx={{
                     mr: 2,
