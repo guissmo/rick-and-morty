@@ -1,6 +1,6 @@
 This is Guissmo's attempt at a Rick and Morty API Front End
 
-# Installation
+# Installation and Usage
 
 ## Development
 
