@@ -4,7 +4,7 @@ This is Guissmo's attempt at a Rick and Morty API Front End.
 
 [Demo](https://rickandmorty.guissmo.com).
 
-![Screenshot](https://imgur.com/a/XanOeBE).
+![Screenshot](https://imgur.com/a/XanOeBE.jpg).
 
 # Installation and Usage
 
