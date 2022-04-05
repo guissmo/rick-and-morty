@@ -2,13 +2,13 @@ This is Guissmo's attempt at a Rick and Morty API Front End.
 
 # Demo
 
-[Demo](https://rickandmorty.guissmo.com).
+[Demo](https://rickandmorty.guissmo.com)
 
-![Search](https://guissmo.com/screenshots/rick-and-morty/01.png).
+![Search](https://guissmo.com/screenshots/rick-and-morty/01.png)
 
-![Character Page](https://guissmo.com/screenshots/rick-and-morty/02.png).
+![Character Page](https://guissmo.com/screenshots/rick-and-morty/02.png)
 
-![No results](https://guissmo.com/screenshots/rick-and-morty/03.png).
+![No results](https://guissmo.com/screenshots/rick-and-morty/03.png)
 
 # Installation and Usage
 
