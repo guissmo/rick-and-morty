@@ -34,7 +34,7 @@ class CharacterCard extends React.Component {
 
     render() {
         return (
-            <Card>
+            <Card style={{ width: 300, maxWidth: 300 }}>
                 <CharacterGridCardImage
                     image={infoStore.image}
                     linkTo={`/characters/${this.id}`}
