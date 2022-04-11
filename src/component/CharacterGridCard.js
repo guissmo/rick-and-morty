@@ -32,7 +32,7 @@ class CharacterGridCard extends React.Component {
                         loading={mainStore.loading}
                     />
                 </Link>
-                <CardContent className="flexer">
+                <CardContent className="flexer height-fixed">
                     {Array.from(Array(this.infoArray.length).keys()).map(
                         (x) => {
                             return (
@@ -47,7 +47,7 @@ class CharacterGridCard extends React.Component {
                     )}
                 </CardContent>
                 <CardActions>
-                    <Link to={`/characters/${this.id}`}>
+                    <Link to={`/characters/${this.id ? this.id : ''}`}>
                         <Button size="small">More info</Button>
                     </Link>
                 </CardActions>

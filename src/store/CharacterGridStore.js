@@ -61,6 +61,7 @@ class CharacterGridStore {
                 .then((response) => response.json())
                 .then((data) => data)
 
+            /* NOTHING FOUND */
             if (summary.error) {
                 this.error = summary.error
                 this.page = 1
