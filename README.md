@@ -2,7 +2,7 @@ This is Guissmo's attempt at a Rick and Morty API Front End.
 
 # Demo
 
-[Demo](https://rickandmorty.guissmo.com)
+[Demo](https://guissmo.com/rick-and-morty)
 
 ![Search](https://guissmo.com/screenshots/rick-and-morty/01.png)
 
