@@ -22,7 +22,7 @@ function NotFoundPage() {
             >
                 Go back
             </Button>
-            <Link to="/characters/">
+            <Link to={`${process.env.PUBLIC_URL}/characters`}>
                 <Button size="medium" variant="contained" sx={{ mt: 1 }}>
                     Characters Page
                 </Button>
