@@ -18,12 +18,12 @@ root.render(
     <React.StrictMode>
         <Router history={router.history}>
             <Routes>
-                <Route exact path="/characters" element={<PageCharacters />} />
-                <Route path="/characters/:id" element={<PageCharacterInfo />} />
+                <Route exact path={`${process.env.PUBLIC_URL}/characters`} element={<PageCharacters />} />
+                <Route path={`${process.env.PUBLIC_URL}/characters/:id`} element={<PageCharacterInfo />} />
                 <Route
                     exact
-                    path="/"
-                    element={<Navigate replace to="/characters" />}
+                    path={`/${process.env.PUBLIC_URL}/`}
+                    element={<Navigate replace to={`${process.env.PUBLIC_URL}/characters`} />}
                 />
                 <Route path="*" element={<PageNotFound />} />
             </Routes>

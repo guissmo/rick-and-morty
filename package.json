@@ -59,5 +59,6 @@
     "eslint-plugin-react": "^7.29.4",
     "nodemon": "^2.0.15",
     "prettier": "^2.6.1"
-  }
+  },
+  "homepage": "https://guissmo.com/rick-and-morty/"
 }

@@ -25,7 +25,7 @@ class CharacterGridCard extends React.Component {
             <Card className="flex-column-parent flexer">
                 <Link
                     className="flex-column-parent flexer"
-                    to={`/characters/${this.id}`}
+                    to={`${process.env.PUBLIC_URL}/characters/${this.id}`}
                 >
                     <CharacterGridCardImage
                         image={this.data.image}
@@ -47,7 +47,7 @@ class CharacterGridCard extends React.Component {
                     )}
                 </CardContent>
                 <CardActions>
-                    <Link to={`/characters/${this.id ? this.id : ''}`}>
+                    <Link to={`${process.env.PUBLIC_URL}/characters/${this.id ? this.id : ''}`}>
                         <Button size="small">More info</Button>
                     </Link>
                 </CardActions>
